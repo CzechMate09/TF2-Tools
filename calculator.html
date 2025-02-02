@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/site.webmanifest">
+    
+    <title>Calculator | TF2 Tools</title>
+</head>
+<body class="calculator">
+  <section>
+    <div class="api-status">
+      <span id="api-status-light" class="status-light"></span>
+      <span id="api-status-text">API Currency Status: Unknown</span>
+    </div>
+    <div class="calc_container">
+      <div class="calc_item">
+        <div class="calc_image_container">
+          <img class="calc_image" src="img/inventory/scrap_metal.png">
+        </div>
+        <label>Scrap</label>
+        <input id="calc_scrap" type="number" min="0" value="0" autocomplete="off">
+      </div>
+
+      <div class="calc_item">
+        <div class="calc_image_container">
+          <img class="calc_image" src="img/inventory/reclaimed_metal.png">
+        </div>
+        <label>Reclaimed</label>
+        <input id="calc_reclaimed" type="number" value="0" autocomplete="off">
+      </div>
+
+      <div class="calc_item">
+        <div class="calc_image_container">
+          <img class="calc_image" src="img/inventory/refined_metal.png">
+        </div>
+        <label>Refined</label>
+        <input id="calc_refined" type="number" value="0" autocomplete="off">
+      </div>
+
+      <div class="calc_item">
+        <div class="calc_image_container">
+          <img class="calc_image" src="img/inventory/key.png">
+        </div>
+        <label>Key</label>
+        <input id="calc_key" type="number" value="0" autocomplete="off">
+      </div>
+
+      <div class="calc_item">
+        <div class="calc_image_container">
+          <img class="calc_image" src="img/inventory/earbuds.png">
+        </div>
+        <label>Earbuds</label>
+        <input id="calc_earbuds" type="number" value="0" autocomplete="off">
+      </div>
+
+      <div class="calc_item">
+        <div class="calc_image_container">
+          <img class="calc_image" src="img/inventory/mvm_credits.png">
+        </div>
+        <select id="calc_currency_select" autocomplete="off"></select>
+        <input id="calc_currency_value" type="number" value="0" autocomplete="off">
+      </div>
+    </div>
+    <hr>
+    <div class="itemList_container">
+      <div class="itemList_container_left">
+        <div class="itemList_group">
+          <label for="list_itemName">Name:</label>
+          <input id="list_itemName" type="text" autocomplete="off"> 
+        </div>
+
+        <div class="itemList_group">
+          <label for="list_itemAmount" >Amount:</label>
+          <input id="list_itemAmount" type="number" min="1" value="1" autocomplete="off"> 
+        </div>
+
+        <div class="itemList_group">
+          <label for="list_itemPrice">Price:</label>
+          <input id="list_itemPrice" type="number" min="0" value="0" autocomplete="off"> 
+        </div>
+
+        <div class="itemList_group">
+          <label for="list_itemCurrency">Currency:</label>
+          <select id="list_itemCurrency" autocomplete="off">
+            <option>keys</option>
+            <option>scrap</option>
+            <option>reclaimed</option>
+            <option>refined</option>
+            <option>earbuds</option>
+          </select>
+        </div>
+
+        <div class="itemList_group">
+          <button id="addItemButton">Add item to list</button>
+          <button id="removeAllItems"><i class="icon"></i></button>
+        </div>
+      </div>
+      <div class="itemList_container_right">
+          <div class="itemList_list" id="itemList_list"></div>
+          <div class="itemList_group" id="itemList_group">
+            <p>Total:</p>
+            <select id="total_Currency" autocomplete="off">
+              <option>keys</option>
+              <option>scrap</option>
+              <option>reclaimed</option>
+              <option>refined</option>
+              <option>earbuds</option>
+            </select>
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="optionsOverlay"></div>
+  <footer id="footer"></footer>
+
+  <script src="js/components.js"></script>
+  <script src="js/calculator.js"></script>
+</body>
+</html>

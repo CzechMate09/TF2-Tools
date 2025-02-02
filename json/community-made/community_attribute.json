@@ -1,0 +1,121 @@
+{
+    "community_attributes": [
+        {
+            "id": null,
+            "status": "positive",
+            "name": "health regen over time",
+            "description": "+%s1 health every %s2 seconds",
+            "type": "additive",
+            "effect": "",
+            "author": "CzechMate"
+        },
+        {
+            "id": null,
+            "status": "positive",
+            "name": "health regen over time",
+            "description": "+%s1 health every %s1 seconds",
+            "type": "additive",
+            "effect": "",
+            "author": "CzechMate"
+        },
+        {
+            "id": null,
+            "status": "positive",
+            "name": "health regen over time",
+            "description": "+%s1 health every %s2 seconds %s3",
+            "type": "additive",
+            "effect": "",
+            "author": "CzechMate"
+        },
+        {
+            "id": null,
+            "status": "positive",
+            "name": "on-hit healing",
+            "description": "Restores +%s1 health per hit",
+            "type": "additive",
+            "effect": "",
+            "author": "CzechMate"
+        },
+        {
+            "id": null,
+            "status": "positive",
+            "name": "ammo on kill",
+            "description": "Gain +%s1 ammo on kill",
+            "type": "additive",
+            "effect": "",
+            "author": "CzechMate"
+        },
+        {
+            "id": null,
+            "status": "positive",
+            "name": "faster reload speed",
+            "description": "+%s1% faster reload speed",
+            "type": "",
+            "effect": "",
+            "author": "CzechMate"
+        },
+        {
+            "id": null,
+            "status": "positive",
+            "name": "faster movement on kill",
+            "description": "On kill: +%s1% movement speed for %s2 seconds",
+            "type": "",
+            "effect": "",
+            "author": "CzechMate"
+        },
+        {
+            "id": null,
+            "status": "positive",
+            "name": "increased projectile speed",
+            "description": "+%s1% projectile speed",
+            "type": "",
+            "effect": "",
+            "author": "CzechMate"
+        },
+        {
+            "id": null,
+            "status": "negative",
+            "name": "slower switch speed",
+            "description": "-%s1% weapon switch speed",
+            "type": "",
+            "effect": "",
+            "author": "CzechMate"
+        },
+        {
+            "id": null,
+            "status": "negative",
+            "name": "self damage on shot",
+            "description": "Fires explosive rounds, but deals %s1 self-damage per shot",
+            "type": "additive",
+            "effect": "",
+            "author": "CzechMate"
+        },
+        {
+            "id": null,
+            "status": "negative",
+            "name": "decreased clip size",
+            "description": "-%s1 bullets per clip",
+            "type": "additive",
+            "effect": "",
+            "author": "CzechMate"
+        },
+        {
+            "id": null,
+            "status": "negative",
+            "name": "weakened healing received",
+            "description": "-%s1% healing received from Medics and Dispensers",
+            "type": "",
+            "effect": "",
+            "author": "CzechMate"
+        },
+        {
+            "id": null,
+            "status": "negative",
+            "name": "decreased accuracy",
+            "description": "+%s1% spread on shots",
+            "type": "",
+            "effect": "",
+            "author": "CzechMate"
+        }
+    ]
+}

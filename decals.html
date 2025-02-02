@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.css" integrity="sha512-087vysR/jM0N5cp13Vlp+ZF9wx6tKbvJLwPO8Iit6J7R+n7uIMMjg37dEgexOshDmDITHYY5useeSmfD1MYiQA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/site.webmanifest">
+    
+    <title>Decal Creator | TF2 Tools</title>
+</head>
+<body class="editor">
+  <section>
+    <nav class="nav_decal">
+      <div class="control-group"> 
+        <span>Decal For: </span>
+        <select id="cropped_select" autocomplete="off">
+          <option value="objector">Conscientious Objector</option>
+          <option value="flair">Flair!</option>
+          <option value="clanPride">Clan Pride</option>
+          <option value="photoBadge">Photo Badge</option>
+        </select>
+        <button id="helpButton">?</button>
+      </div>
+
+      <div class="cropper-controls">
+        <div class="control-group">
+          <label id="file-label" for="imageInput" class="file-label"><i class="fa-solid fa-file-import"></i> Choose File</label>
+          <input type="file" id="imageInput" accept="image/*" />
+          <button id="reset"><i class="fa-solid fa-rotate"></i>Reset Cropper</button>
+        </div>
+
+        <div class="control-group">
+          <label for="viewMode">View Mode:</label>
+          <select id="viewMode" autocomplete="off">
+            <option value="0">Free</option>
+            <option value="1">Restrict to canvas</option>
+            <option value="2">Restrict to crop box</option>
+            <option value="3">Strict mode</option>
+          </select>
+        </div>
+
+        <!-- I don't thing this is actually useful -->
+        <div class="control-group" style="display:none">
+          <label for="dragMode">Drag Mode: </label>
+          <select id="dragMode" autocomplete="off">
+            <option value="move">Move</option>
+            <option value="crop">Crop</option>
+            <option value="none">None</option>
+          </select>
+        </div>
+
+        <div class="control-group" id="imageSize_group">
+          <label for="imageSizeInput">Image Size: </label>
+          <select id="imageSizeInput" autocomplete="off">
+            <option value="128">128 px (Use this one!!)</option>
+            <option value="256">256 px</option>
+            <option value="512">512 px</option>
+            <option value="1024">1024 px</option>
+            <option value="2048">2048 px</option>
+          </select>
+        </div>
+
+        <div class="control-group">
+          <label class="custom-checkbox">
+            <input type="checkbox" id="backgroundToggle" />
+            <span class="checkmark"></span> Background
+          </label>
+          <input type="color" id="bgColor" value="#ffffff" />
+        </div>
+
+        <!-- flair -->
+        <div class="control-group" id="circle_group">
+          <label class="custom-checkbox">
+            <input type="checkbox" id="circleToggle" />
+            <span class="checkmark"></span> Add border
+          </label>
+          <input type="color" id="circleColor" value="#ffffff" />
+        </div>
+
+        <div class="control-group">
+          <label class="custom-checkbox">
+            <input type="checkbox" id="hideCropper" />
+            <span class="checkmark"></span> Hide cropper
+          </label>
+        </div>
+        
+        <div class="control-group">
+          <button id="rotate"><i class="fa-solid fa-rotate-right"></i>Rotate by</button>
+          <input type="text" id="inputDeg" value="45" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" />
+          <label>°</label>
+        </div>
+        
+        <div class="control-group">
+          <label>Mirror:</label>
+          <button id="mirror_hor"><i class="fa-solid fa-left-right"></i>horizontally</button>
+          <button id="mirror_ver"><i class="fa-solid fa-up-down"></i>vertically</button>
+        </div>
+      </div>
+    </nav>
+
+    <nav class="nav_decal">
+      <!-- objector -->
+      <button id="cropButton"><i class="fa-solid fa-crop-simple"></i>Crop Image</button>
+      <!-- flair -->
+      <button id="cropFlairButton">Crop Image</button>
+      <button id="nextButton">Select next image</button>
+      <button id="generateFlairButton">Create flair! image</button>
+      <button id="reloadButton" onclick="location.reload()">Create new flair!</button>
+      <!-- Clan Pride -->
+      <button id="cropClanPrideButton"><i class="fa-solid fa-crop-simple"></i>Crop Image</button>
+      <!-- Photo Badge -->
+      <button id="cropPhotoBadgeButton"><i class="fa-solid fa-crop-simple"></i>Crop Image</button>
+    </nav>
+  </section>
+      
+  <div class="container-wrapper" id="container-wrapper">
+    <div class="container" id="container">
+      <img id="cropper-image">
+    </div>
+    <span id="fileName">No file chosen</span>
+  </div>
+  
+  <div id="overlay">
+    <p>NEW ITEM ACQUIRED!</p>
+    <p>YOU <span>FOUND</span>:</p>
+    <div id="overlayContent">
+      <div class="overlay_text">
+        <label>ITEM</label>
+        <label>#1</label>
+      </div>
+      <img id="croppedImagePreview" alt="Cropped Preview" />
+    </div>
+    <div id="buttonContainer">
+      <button id="downloadButton"><i class="fa-solid fa-file-arrow-down"></i>Download Cropped Image</button>
+      <button id="downloadZipButton"><i class="fa-solid fa-file-zipper"></i>Download Decal with path</button>
+      <button id="okButton">OK, return</button>
+    </div>
+  </div>
+  
+  <div id="helpOverlay">
+    <div id="HelpOverlayContent">
+      <h2>Decals</h2>
+      <p>Image has to be 128x128 pixels large, which is why you can't change the aspect ratio of the cropper.</p>
+      <p>Image has to be named "paper_overlay" for objector, "flair_template_guide" for flair!, and has to be in the following path: "tf/custom/custom_folder/scripts/items/custom_texture_blend_layers".</p>
+      <p>After cropping the image and downloading the zip file, extract the zip file and put the "tf" folder in your Team Fortress 2 folder.
+        To find the Team Fortress folder easily, open "steam > Library > right-click on TF2 > manage > Browse local files" this will open the main TF2 directory, and now simply paste the downloaded tf folder.
+        After that open TF2, use your Decal Tool and select the image from the "tf > custom > decal_tf2tools > scripts > items > custom_texture_blend_layers" folder.</p>
+        
+        <h2>Cropper settings</h2>
+        <p><b>Choose file: </b>Lets you select an image file for cropping</p>
+        <p><b>Reset Cropper: </b>Resets the cropper settings</p>
+        <p><b>View Mode: </b>Controls the boundaries for the cropping area in relation to the container.</p>
+        <ul>
+          <li><b>Free:</b> The cropper can extend outside the container, allowing unrestricted movement and scaling.</li>
+          <li><b>Restrict to canvas:</b> The cropper is limited to the image boundaries but can still be moved and resized freely within it.</li>
+          <li><b>Strict Container:</b> The cropping area must stay fully within the container. The image cannot move outside the boundaries but can still be resized.</li>
+          <li><b>Fully Contained:</b> The crop box is strictly confined within the container and cannot go outside. This mode is ideal for precise or controlled cropping.</li>
+        </ul>
+        <p><b>Background: </b>Adds a backround to your cropped image from a selected color, can be useful when your image has transparent elements, in game the transparent part would be replaced with solid black color. (note: the color in the preview is not accurate! Use "hide cropper" setting to check if the selected color is what you selected! )  </p>
+        <p><b>Add border: </b>Adds a circular border around the the cropped image. This is useful because when the image is used on the Flair! item, the border gets distorted around the edges. This way, you can fill the distorted part with a solid color.</p>
+        <p><b>Hide Cropper: </b>Hides the cropper in the preview </p>
+        <p><b>Rotate by: </b>Rotates image by set degrees (default is set to 45°) </p>
+        <p><b>Crop image: </b>Crops the image, and gives you 2 options:</p>
+        <ul>
+          <li><b>Download cropped image: </b>Downloads just the PNG of the cropped image</li>
+          <li><b>Download decal with path: </b>Downloads a zip file with the cropped image with premade path that you can simply extract and paste to your team fortress folder</li>
+        </ul>
+        <button id="okReturnHelp">OK, return</button>
+      </div>
+  </div>
+  
+  <div id="optionsOverlay"></div>
+  <footer id="footer"></footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js" integrity="sha512-JyCZjCOZoyeQZSd5+YEAcFgz2fowJ1F1hyJOXgtKu4llIa0KneLcidn5bwfutiehUTiOuK87A986BZJMko0eWQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.6.0/jszip.min.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/global_functions.js"></script>
+  <script src="js/decals.js"></script>
+</body>
+</html>

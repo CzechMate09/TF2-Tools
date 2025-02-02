@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/site.webmanifest">
+    
+    <title>UGC Converter | TF2 Tools</title>
+</head>
+<body class="text_page">
+    <section>
+        <h2>Steam UGC Converter</h2>
+        <hr>
+        <p>Converts Steam UGC links to float, useful for adding attributes to decal items using AddAttribute() (Vscript).</p>
+        <p>Paste the UGC URL here:</p>
+        <div>
+            <input type="text" id="url" autocomplete="off" placeholder="https://steamuserimages-a.akamaihd.net/ugc/"><button id="convert">convert!</button>
+        </div>
+
+        <div id="ugc_group">
+            <p>Image:</p>
+            <img id="ugc_img" src="">
+        </div>
+
+        <h2>Integer:</h2>
+        <div>
+            <span>Hi:</span>
+            <input type="text" id="hi_int" autocomplete="off" disabled>
+            <button onclick="copyToClipboard('hi_int')">Copy</button>
+        </div>
+
+        <div>
+            <span>Lo:</span>
+            <input type="text" id="lo_int" autocomplete="off" disabled>
+            <button onclick="copyToClipboard('lo_int')">Copy</button>
+        </div>
+
+        <h2>Float:</h2>
+        <div>
+            <span>Hi:</span>
+            <input type="text" id="hi_float" autocomplete="off" disabled>
+            <button onclick="copyToClipboard('hi_float')">Copy</button>
+        </div>
+
+        <div>
+            <span>Lo:</span>
+            <input type="text" id="lo_float" autocomplete="off" disabled>
+            <button onclick="copyToClipboard('lo_float')">Copy</button>
+        </div>
+
+        <div>
+            <span id="custom_texture_hi">AddAttribute("custom texture hi", hi, -1)</span><button onclick="copyToClipboard('custom_texture_hi')">Copy</button>
+        </div>
+
+        <div>
+            <span id="custom_texture_lo">AddAttribute("custom texture lo", lo, -1)</span><button onclick="copyToClipboard('custom_texture_lo')">Copy</button>
+        </div>
+
+    </section>
+
+    <div id="optionsOverlay"></div>
+    <footer id="footer"></footer>
+    
+    <script src="js/components.js"></script>
+    <script src="js/global_functions.js"></script>
+    <script src="js/ugc.js"></script>
+</body>
+</html>

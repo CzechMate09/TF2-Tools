@@ -1,0 +1,35 @@
+{
+    "default": {
+      "scout": "img/icons/class_icons/Leaderboard_class_scout.png",
+      "soldier": "img/icons/class_icons/Leaderboard_class_soldier.png",
+      "pyro": "img/icons/class_icons/Leaderboard_class_pyro.png",
+      "demoman": "img/icons/class_icons/Leaderboard_class_demoman.png",
+      "heavy": "img/icons/class_icons/Leaderboard_class_heavy.png",
+      "engineer": "img/icons/class_icons/Leaderboard_class_engineer.png",
+      "medic": "img/icons/class_icons/Leaderboard_class_medic.png",
+      "sniper": "img/icons/class_icons/Leaderboard_class_sniper.png",
+      "spy": "img/icons/class_icons/Leaderboard_class_spy.png"
+    },
+    "alternative": {
+      "scout": "img/icons/class_icons_alt/Leaderboard_class_alt_scout.png",
+      "soldier": "img/icons/class_icons_alt/Leaderboard_class_alt_soldier.png",
+      "pyro": "img/icons/class_icons_alt/Leaderboard_class_alt_pyro.png",
+      "demoman": "img/icons/class_icons_alt/Leaderboard_class_alt_demoman.png",
+      "heavy": "img/icons/class_icons_alt/Leaderboard_class_alt_heavy.png",
+      "engineer": "img/icons/class_icons_alt/Leaderboard_class_alt_engineer.png",
+      "medic": "img/icons/class_icons_alt/Leaderboard_class_alt_medic.png",
+      "sniper": "img/icons/class_icons_alt/Leaderboard_class_alt_sniper.png",
+      "spy": "img/icons/class_icons_alt/Leaderboard_class_alt_spy.png"
+    },
+    "emblems": {
+      "scout": "img/icons/class_emblems/Scout_emblem",
+      "soldier": "img/icons/class_emblems/Soldier_emblem",
+      "pyro": "img/icons/class_emblems/Pyro_emblem",
+      "demoman": "img/icons/class_emblems/Demoman_emblem",
+      "heavy": "img/icons/class_emblems/Heavy_emblem",
+      "engineer": "img/icons/class_emblems/Engineer_emblem",
+      "medic": "img/icons/class_emblems/Medic_emblem",
+      "sniper": "img/icons/class_emblems/Sniper_emblem",
+      "spy": "img/icons/class_emblems/Spy_emblem"
+    }
+  }

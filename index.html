@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/favicon/site.webmanifest">
+  
+  <title>Main Menu | TF2 Tools</title>
+</head>
+<body class="main_menu">
+  <section>
+    <h1>TEAM<i class="logo">&#xe91e;</i>FORTRESS 2 TOOLS</h1>
+    <nav class="nav_main_menu">
+    <h2>DECALS</h2>
+      <button onclick="window.location.href='decals.html'"><i class="icon">&#xe91e;</i> Decal Creator</button>
+      <button onclick= "window.location.href = 'colored_decal.html';"><i class="icon">&#xe907;</i> Apply colored Clan Pride/Photo Badge</button>
+    </nav>
+    <nav class="nav_main_menu">
+      <h2>Weapon Generators</h2>
+      <button onclick= "window.location.href = 'custom_weapon.html';"><i class="icon">&#xe90e;</i> Custom Weapon Generator</button>
+      <button onclick= "window.location.href = 'random_weapon.html';"><i class="icon">&#xe916;</i> Random Weapon Generator</button>
+    </nav>
+    <nav class="nav_main_menu">
+      <h2>OTHER TOOLS</h2>
+      <button onclick= "window.location.href = 'calculator.html';"><i class="icon">&#xe90f;</i> Calculator (WIP)</button>
+      <button onclick= "window.location.href = 'ugc.html';"><i class="icon">&#xe915;</i> UGC Converter</button>
+    </nav>
+  </section>
+  
+  <div class="menu_tab">
+    <button id="button_alert" class="tab_item"></button>
+    <button id="button_motd" class="tab_item"></button>
+  </div>
+
+  <footer id="footer"></footer>
+  <div id="optionsOverlay"></div>
+
+  <script src="js/components.js"></script>
+  <script src="js/backgrounds.js"></script>
+</body>
+</html>

@@ -1,0 +1,2351 @@
+/* * { border: 1px solid red !important; } */
+:root {
+  /* https://wiki.teamfortress.com/wiki/User:Pilk/Colours */
+
+  /* Item qualities */
+  --q_normal: #B2B2B2;
+  --q_unique: #FFD700;
+  --q_vintage: #476291;
+  --q_genuine: #4D7455;
+  --q_strange: #CF6A32;
+  --q_unusual: #8650AC;
+  --q_haunted: #38F3AB;
+  --q_collectors: #AA0000;
+  --q_decorated: #FAFAFA;
+  --q_community: #70B04A;
+  --q_selfmade: #70B04A;
+  --q_valve: #A50F79;
+
+  /* weapon atributes */
+  --w_positive: #99CCFF;
+  --w_negative: #FF4040;
+  --w_neutral: #EBE2CA;
+  --w_level: #756B5E;
+
+  --item_ItemSetName: #E1FF0F;
+  --item_ItemSetItemEquipped: #95AF0C;
+  --item_ItemSetItemMissing: #8B8989;
+  --item_ItemIsotope: #E1FF0F;
+  --item_ItemBundleItem: #95AF0C;
+  --item_ItemLimitedUse: #00A000;
+  --item_ItemFlags: #756B5E;
+
+  /* Achievements */
+  --a_orange: #F4722B;
+  --a_offwhite: #F5E5C1;
+  --a_offblack: #3E3E3E;
+
+  /* Menu */
+  --m_button: #9b8d6f;
+  --m_button_gradient_top: #dad0b8;
+  --m_button_hover: #4f2920;
+  --m_button_hover_top: #91493b;
+  --m_footer_top: #393431;
+  --m_footer: #342f2b;
+  --m_footer_shadow: #8d7d72;
+  --m_icons: #766c5e;
+  --m_text: #fdf4dd;
+  --m_text_black: #211f1e;
+  --m_green: #4b6b1c;
+  --m_red: #632421;
+  --m_mailBox_background: #504537;
+  --m_mailBox: #ead7ab;
+
+  /* logo */
+  --logo_orange: #b25216;
+  /* --logo_orange: #9D5321; */
+  --logo_white: #ffffff;
+  --logo_black: #211f1e;
+  /* --logo_black: #262324; */
+
+  /* Inventory */
+  --i_button: #766b5e;
+  --i_button_hover: #924738;
+  --i_text_highlight: #B7574C;
+  --i_background_0: #2a2725;
+  --i_background_1: #2f2b2a;
+  --i_background_1_hover: #b1a895;
+
+  --i_background_2: #342f29;
+  /* --i_background_2: #3C362F; */
+  --i_border: #aea391;
+  --i_item_background_default: #292526;
+  --i_item_background: #211e1b;
+}
+
+* {
+  font-size: 22px;
+  font-family: "tf2_build";
+  color: var(--m_text);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  overflow: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--m_footer);
+  height: 100vh;
+}
+
+.main_menu {
+  background-image: url(img/backgrounds/main/characters/demoman.png), url(img/backgrounds/main/backgrounds/Background_2fort_widescreen.png);
+  background-repeat: no-repeat;
+  background-size: 70% auto, cover;
+  background-position: 80% 65%, 100% 50%;
+}
+
+.menu_tab {
+  display: flex;
+  top: 2vh;
+  right: 5vw;
+  position: absolute;
+  gap: 20px;
+}
+
+#button_motd {
+  background-image: url("img/vgui/button_motd.png");
+  background-color: transparent;
+  background-size: contain;
+}
+
+#button_alert {
+  background-image: url("img/vgui/button_alert.png");
+  background-color: transparent;
+  background-size: contain;
+  animation: flash 0.7s infinite;
+
+  display: none;
+}
+
+@keyframes flash {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+.tab_item {
+  display: inline-block;
+  width: 70px;
+  height: 70px;
+}
+
+.editor {
+  background: var(--i_background_0);
+  align-items: center;
+}
+
+.text_page {
+  background: var(--i_background_0);
+  align-items: center;
+}
+
+.text_page section {
+  position: relative;
+  height: auto;
+  width: 60%;
+  margin: 24px 0 0;
+  padding-top: 20px;
+  background: var(--i_background_2);
+  border-radius: 5px;
+  box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.2), 0 -2px var(--m_footer_shadow);
+  display: flex;
+  flex-direction: column;
+  color: var(--m_text);
+  padding: 30px;
+}
+
+.text_page section div {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+#ugc_group {
+  display: none;
+}
+
+#ugc_img {
+  width: 30%;
+}
+
+.text_page section button {
+  width: 25%;
+  justify-content: center;
+}
+
+.text_page h2 {
+  font-weight: lighter;
+  font-size: 30px;
+}
+
+.text_page p {
+  font-family: "tf2_secondary";
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.text_page a {
+  font-family: "tf2_secondary";
+  color: var(--i_text_highlight);
+}
+
+a {
+  color: var(--i_text_highlight);
+}
+
+.calculator {
+  background: var(--i_background_0);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+h2 {
+  font-weight: lighter;
+}
+
+/* --- NAV --- */
+.main_menu section {
+  position: relative;
+  top: 3%;
+  left: 10%;
+  width: 85%;
+}
+
+.editor section {
+  position: relative;
+  height: auto;
+  width: 95%;
+}
+
+.calculator section {
+  position: relative;
+  height: auto;
+  width: 95%;
+  margin: 24px 0 0;
+  padding-top: 20px;
+  background: var(--i_background_2);
+  border-radius: 5px;
+  box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.2), 0 -2px var(--m_footer_shadow);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: var(--m_text);
+  padding: 20px;
+}
+
+nav {
+  width: 40%;
+  margin: 40px 0 0;
+  padding: 20px;
+  background: var(--i_background_2);
+  border-radius: 3px;
+  box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.2), 0 -2px var(--m_footer_shadow);
+}
+
+.nav_decal {
+  margin: 20px 0 0;
+}
+
+nav h2 {
+  margin-bottom: 10px;
+  margin-left: 10px;
+  color: var(--m_text);
+  font-size: 30px;
+}
+
+button span {
+  padding-right: 10px;
+  padding-left: 5px;
+}
+
+.multibtn span {
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+i {
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button i,
+label i {
+  padding-right: 10px;
+  padding-left: 5px;
+}
+
+.multibtn i {
+  padding-right: 0px;
+  padding-left: 0px;
+  font-size: 26px;
+}
+
+button {
+  appearance: none;
+  position: relative;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  border: none;
+  width: 100%;
+  padding: 10px 5px 10px 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  background: var(--i_button);
+  color: var(--m_text);
+  box-shadow: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background: var(--i_button_hover);
+}
+
+.nav_main_menu button {
+  justify-content: left;
+  margin: 15px 0;
+  background: var(--m_button);
+  background: linear-gradient(to bottom, var(--m_button_gradient_top) 0%, var(--m_button) 100%);
+  color: var(--m_text_black);
+  text-align: left;
+  box-shadow: inset 0 2px 2px rgba(255, 255, 255, 0.2),
+    inset 0 -2px rgba(0, 0, 0, 0.3),
+    0 2px 2px 3px rgba(255, 255, 255, 0.05),
+    0 0 3px rgba(0, 0, 0, 0.5),
+    0 6px 5px -6px rgba(0, 0, 0, 1);
+  border: none;
+
+}
+
+.nav_main_menu button i {
+  color: var(--m_icons);
+}
+
+nav div button {
+  width: 49%;
+  display: inline;
+  margin-bottom: -20px;
+  float: left;
+  margin: 0;
+}
+
+nav div button:last-child {
+  float: right;
+}
+
+nav button:first-of-type {
+  margin-top: 0;
+}
+
+nav button:last-of-type {
+  margin-bottom: 0;
+}
+
+.nav_main_menu button:hover {
+  background: linear-gradient(to bottom, var(--m_button_hover_top) 0%, var(--m_button_hover) 100%);
+  color: var(--m_text);
+}
+
+.nav_main_menu button:hover i {
+  color: var(--m_text);
+}
+
+.icon {
+  font-family: "tf2_icons";
+  position: relative;
+  top: -2px;
+}
+
+/* --- FOOTER --- */
+footer {
+  margin-top: 50px;
+  position: relative;
+  display: flex;
+  bottom: 0;
+  width: 100%;
+  height: 75px;
+  background: linear-gradient(to bottom, var(--m_footer_top) 0%, var(--m_footer) 100%);
+  box-shadow: 0 -4px var(--m_footer_shadow);
+}
+
+footer>div {
+  width: 80%;
+  height: 75px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+footer button {
+  width: 20%;
+  text-align: center;
+  justify-content: center;
+  font-size: 26px;
+}
+
+.multibtn {
+  display: flex;
+  gap: 1px;
+  margin-left: 0;
+}
+
+.multibtn button {
+  width: 55px;
+  text-align: center;
+  padding: 10px;
+  margin: 0;
+  border-radius: 0;
+}
+
+.multibtn button:first-child {
+  border-radius: 5px 0 0 5px;
+}
+
+.multibtn button:last-child {
+  border-radius: 0 5px 5px 0;
+}
+
+footer .icon {
+  color: var(--m_text);
+}
+
+/* --- LOGO --- */
+h1 {
+  font-family: "Crispy";
+  font-weight: lighter;
+  font-size: 64px;
+  display: inline-block;
+}
+
+.logo {
+  font-family: "tf2_icons";
+  font-size: 40px;
+  color: var(--logo_black);
+  position: relative;
+  top: -5px;
+  margin: 0 -8px;
+  text-shadow: none;
+  vertical-align: middle;
+}
+
+/* --- CROPPER --- */
+#cropper-image {
+  display: none;
+  /* This rule is very important, please don"t ignore this */
+  max-width: 100% !important;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+.container-wrapper {
+  position: absolute;
+  right: 2%;
+  margin-top: 20px;
+  width: 50%;
+  height: 70%;
+  display: none;
+  flex-direction: column;
+  border: 10px solid var(--i_background_2);
+  border-radius: 5px;
+  box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.2), 0 -2px var(--i_border);
+}
+
+input {
+  display: flex;
+  background-color: var(--i_background_2);
+  color: var(--m_text);
+  box-shadow: none;
+  border-radius: 5px;
+  cursor: pointer;
+
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.file-upload {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+input[type="color"] {
+  display: none;
+  width: 50%;
+  margin-left: auto;
+}
+
+#fileName {
+  font-size: 16px;
+  color: var(--m_text);
+  overflow-x: auto;
+  position: absolute;
+  margin-top: 20px;
+  max-width: 100%;
+}
+
+.cropper-point.point-se,
+.cropper-point.point-sw,
+.cropper-point.point-nw,
+.cropper-point.point-ne {
+  width: 25px;
+  height: 25px;
+}
+
+.cropper-point.point-s,
+.cropper-point.point-w,
+.cropper-point.point-n,
+.cropper-point.point-e {
+  width: 20px;
+  height: 20px;
+}
+
+
+.cropper-face {
+  background-color: transparent;
+}
+
+.cropper-view-box,
+.cropper-face {
+  border-radius: 0;
+}
+
+/* inner circle */
+.cropper-view-box::after,
+.cropper-face::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80%;
+  height: 80%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: none
+}
+
+.circle-style .cropper-view-box,
+.circle-style .cropper-face {
+  border-radius: 50%;
+}
+
+.circle-style .cropper-view-box::after,
+.circle-style .cropper-face::after {
+  width: 80%;
+  height: 80%;
+  border: 2px solid var(--circle-color, rgba(0, 0, 0, 0));
+}
+
+.cropper-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.cropper-controls label {
+  color: var(--m_text);
+}
+
+.file-label {
+  display: flex;
+  background-color: var(--i_button);
+  color: var(--m_text);
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 10px 5px 10px 5px;
+  width: 50%;
+  height: 100%;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.file-label:hover {
+  background: var(--i_button_hover);
+}
+
+.control-group select {
+  background: var(--i_background_1);
+  width: 60%;
+  margin-left: auto;
+  color: var(--m_text);
+  border-radius: 5px;
+  padding: 7px 5px 7px 5px;
+}
+
+option {
+  font-family: "tf2_build";
+}
+
+input[type="text"] {
+  background: var(--i_background_2);
+
+  padding: 7px 5px 7px 5px;
+}
+
+.control-group {
+  display: flex;
+  gap: 5px;
+  padding-left: 10px;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.control-group input[type="text"] {
+  width: 30%;
+}
+
+.custom-checkbox input[type="checkbox"] {
+  display: none;
+}
+
+.custom-checkbox {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.custom-checkbox .checkmark {
+  width: 20px;
+  height: 20px;
+  background-color: var(--m_text);
+  border-radius: 5px;
+  margin-right: 10px;
+  position: relative;
+  transition: background-color 0.3s;
+}
+
+.custom-checkbox input[type="checkbox"]:checked+.checkmark {
+  background-color: var(--m_green);
+}
+
+.custom-checkbox .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 7px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.custom-checkbox input[type="checkbox"]:checked+.checkmark:after {
+  display: block;
+}
+
+#generateFlairButton {
+  display: none;
+  background: var(--m_green);
+}
+
+#reloadButton {
+  display: none;
+  text-align: center;
+  justify-content: center;
+}
+
+#circle_group,
+#cropClanPrideButton,
+#cropPhotoBadgeButton,
+#cropFlairButton,
+#cropButton {
+  display: none;
+}
+
+#helpOverlay {
+  padding: 10px 20px 10px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--i_background_0);
+  display: none;
+  flex-direction: column;
+  align-items: left;
+  z-index: 1000;
+  overflow-y: auto
+}
+
+#HelpOverlayContent {
+  width: 95%;
+  height: auto;
+}
+
+#helpOverlay p {
+  margin: 15px;
+  font-family: "tf2_secondary";
+  color: var(--m_text)
+}
+
+#helpOverlay li::before {
+  color: var(--i_text_highlight)
+}
+
+#helpOverlay b {
+  font-family: "tf2_secondary";
+  color: var(--i_text_highlight);
+}
+
+#helpOverlay h2 {
+  font-size: 30px;
+  margin: 20px;
+}
+
+#helpOverlay button {
+  width: 300px;
+  text-align: center;
+  justify-content: center;
+  margin: 2%;
+}
+
+/* Settings */
+#optionsOverlay,
+#weapon_select_overlay {
+  padding: 10px 20px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  height: 80%;
+  background-color: var(--i_background_0);
+  display: none;
+  flex-direction: column;
+  align-items: flex-start;
+  z-index: 1000;
+  overflow-y: auto;
+  border: 3px solid var(--m_footer_shadow);
+  transform: translate(-50%, -50%);
+  border-radius: 20px;
+}
+
+#weapon_select_overlay {
+  align-items: center;
+}
+
+#weapon_select_overlay .optionsOverlay-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+#weapon-list {
+  display: block;
+  gap: 10px;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  padding: 10px;
+  background-color: var(--i_background_2);
+  border-radius: 5px;
+}
+
+.weapon-item {
+  cursor: pointer;
+  padding: 10px;
+}
+
+.weapon-item:hover {
+  background: var(--i_background_1_hover);
+}
+
+#weapon_select_overlay input[type="text"] {
+  width: 100%;
+}
+
+#optionsOverlay select,
+#weapon_select_overlay select {
+  background: var(--i_background_1);
+  width: 50%;
+  padding-left: 10px;
+  font-family: "tf2_build";
+  color: var(--m_text);
+  border-radius: 5px;
+  padding: 7px 5px 7px 5px;
+}
+
+.optionsOverlay-group {
+  width: 90%;
+  margin: 10px;
+}
+
+#optionsOverlay p,
+#weapon_select_overlay p {
+  margin: 15px;
+  font-family: "tf2_secondary";
+  color: var(--m_text)
+}
+
+ul {
+  margin-top: 15px;
+}
+
+li {
+  margin: 10px;
+  margin-left: 30px;
+  font-family: "tf2_secondary";
+  list-style-type: none;
+  color: var(--m_text);
+}
+
+li::before {
+  content: "> ";
+  color: var(--m_text);
+}
+
+#optionsOverlay b,
+#weapon_select_overlay b {
+  font-family: "tf2_secondary";
+  color: var(--i_text_highlight);
+}
+
+#optionsOverlay h2,
+#weapon_select_overlay h2 {
+  font-size: 40px;
+  margin: 10px;
+  color: var(--i_text_highlight);
+  align-self: center;
+}
+
+#optionsOverlay h3,
+#weapon_select_overlay h3 {
+  font-size: 32px;
+  margin: 20px 0px 5px 0px;
+  color: var(--m_text);
+  font-weight: lighter;
+}
+
+#optionsOverlay button,
+#weapon_select_overlay button {
+  width: 280px;
+  text-align: center;
+  justify-content: center;
+  margin: 2%;
+  bottom: 0;
+  margin-top: auto;
+  align-self: center;
+}
+
+#optionsOverlay hr,
+#weapon_select_overlay hr {
+  width: 100%;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.filter-container {
+  display: flex;
+  margin: 10px 0px 10px 0px;
+}
+
+#optionsOverlayContent {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.slider-container label {
+  white-space: nowrap;
+}
+
+#volumeSlider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 60%;
+  height: 8px;
+  background: var(--logo_black);
+  border-radius: 0px;
+  outline: none;
+  cursor: pointer;
+}
+
+#volumeSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 35px;
+  background: var(--i_button);
+  border: none;
+  border-radius: 0px;
+  cursor: pointer;
+}
+
+#volumeSlider::-moz-range-thumb {
+  width: 20px;
+  height: 35px;
+  background: var(--i_button);
+  border: none;
+  border-radius: 0px;
+  cursor: pointer;
+}
+
+#volumeSlider::-ms-thumb {
+  width: 20px;
+  height: 35px;
+  background: var(--i_button);
+  border: none;
+  border-radius: 0px;
+  cursor: pointer;
+}
+
+.slider-container {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+#volumePercentage {
+  min-width: 50px;
+  text-align: right;
+}
+
+/* --- NEW ITEM! --- */
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--i_background_0);
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.overlay_text {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+
+.overlay_text label {
+  font-size: 24px;
+}
+
+.overlay_text label:nth-child(2) {
+  position: absolute;
+  font-size: 64px;
+  top: 15px;
+}
+
+#overlay p {
+  margin-top: 1%;
+  margin-bottom: 1%;
+  color: var(--m_text);
+  font-size: 64px;
+}
+
+#overlay p:nth-child(2) {
+  font-size: 32px;
+  margin-bottom: 1%;
+}
+
+#overlay span {
+  color: var(--i_text_highlight);
+  font-size: 32px;
+}
+
+#overlayContent {
+  background-color: var(--i_background_0);
+  text-align: center;
+  color: var(--m_text);
+  width: 60%;
+  height: 60%;
+  border: 3px solid var(--m_text);
+  border-radius: 8px;
+  margin-bottom: 2%;
+}
+
+#croppedImagePreview {
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+#buttonContainer {
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+  width: 75%;
+  height: 7%;
+}
+
+#buttonContainer button {
+  font-size: 20px;
+  width: 30%;
+  text-align: center;
+  justify-content: center;
+}
+
+#buttonContainer i {
+  font-size: 20px;
+}
+
+#downloadZipButton {
+  background-color: var(--m_green);
+}
+
+#nextButtonContainer {
+  display: flex;
+  text-align: center;
+  gap: 3%;
+  width: 100%;
+  height: 7%;
+  align-items: center;
+  margin-top: 3%;
+}
+
+#nextButtonContainer button {
+  width: 50%;
+  text-align: center;
+  justify-content: center;
+}
+
+#nextButton {
+  background: var(--m_green);
+  display: none;
+  text-align: center;
+  justify-content: center;
+}
+
+.nav_decal button {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+i {
+  color: var(--m_text);
+}
+
+#helpButton {
+  width: 40px;
+  aspect-ratio: 1;
+  text-align: center;
+  justify-content: center;
+  display: inline-flex;
+}
+
+#mirror_hor,
+#mirror_ver {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+.calc_container {
+  flex: 1;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  width: 70%;
+  flex-wrap: wrap;
+  color: var(--m_text);
+}
+
+.calc_item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  width: 170px;
+  height: auto;
+  background-color: var(--i_item_background_default);
+  flex-direction: column;
+  margin: 10px;
+  border: 3px solid var(--q_unique);
+  border-radius: 10px;
+}
+
+.calc_image_container {
+  width: 100px;
+  height: 100px;
+}
+
+.calc_image {
+  width: 100%;
+  height: auto;
+}
+
+.calc_item input,
+#calc_currency_select {
+  display: flex;
+  background-color: var(--i_background_2);
+  box-shadow: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 80%;
+  height: 30px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 20px;
+  color: var(--m_text);
+}
+
+#calc_currency_select {
+  background-color: var(--i_item_background_default);
+  border: none;
+}
+
+
+.calc_item label {
+  color: var(--m_text);
+  font-size: 20px;
+  margin: 10px;
+}
+
+hr {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 30px 0 30px 0;
+  color: var(--m_footer_shadow);
+  color: var(--m_text);
+  align-self: center;
+}
+
+.itemList_container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.itemList_container2 {
+
+  display: flex;
+  width: 80%;
+  width: 90%;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+
+}
+
+.itemList_group {
+  display: flex;
+  width: 80%;
+  margin: 10px;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  align-items: center;
+  color: var(--m_text);
+  margin-left: auto;
+}
+
+#itemList_group {
+  width: 65%;
+}
+
+.itemList_group i {
+  margin-right: 0px;
+}
+
+.itemList_group button {
+  width: 70%;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25px;
+  color: var(--m_text);
+}
+
+.itemList_group input,
+.itemList_group select {
+  margin-left: auto;
+  background: var(--i_background_2);
+  width: 50%;
+  padding: 7px 5px 7px 5px;
+  color: var(--m_text);
+  border-radius: 5px;
+}
+
+#total_Currency {
+  width: 40%;
+  color: var(--m_text);
+}
+
+.itemList_container_left {
+  display: flex;
+  width: auto;
+  flex-direction: column;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  color: var(--m_text);
+}
+
+.itemList_container_right {
+  display: flex;
+  width: 50%;
+  height: 400px;
+  flex-direction: column;
+  color: var(--m_text);
+}
+
+.itemList_list {
+  overflow: auto;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: flex-start;
+  justify-items: center;
+  align-items: flex-start;
+  color: var(--m_text);
+}
+
+.item_list_currency {
+  background: var(--i_background_2);
+  padding: 7px 5px 7px 5px;
+  color: var(--m_text);
+  border-radius: 5px;
+}
+
+.itemList_item {
+  display: flex;
+  width: 95%;
+  height: auto;
+  padding: 10px;
+  border: 3px solid var(--q_unique);
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  margin: 10px;
+  background-color: var(--i_item_background_default);
+  color: var(--m_text);
+}
+
+.itemList_item button {
+  width: 40px;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  color: var(--m_text);
+}
+
+.itemList_item i {
+  margin-right: 0px
+}
+
+.item_list_ItemName {
+  width: 40%;
+}
+
+.item_list_itemAmount {
+  width: 15%;
+}
+
+.item_list_itemPrice {
+  width: 15%;
+}
+
+#removeAllItems {
+  width: 50px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25px;
+  color: var(--m_text);
+  margin-left: 20px;
+}
+
+#removeAllItems i::after {
+  content: "\e91a";
+  color: var(--m_text);
+  margin: 0;
+  padding: 0;
+}
+
+#removeAllItems:hover i::after {
+  content: "\e914";
+}
+
+.api-status {
+  display: flex;
+  align-items: center;
+  margin: 20px;
+  justify-content: center;
+  align-content: center;
+  color: var(--m_text);
+}
+
+.status-light {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  margin-right: 10px;
+  background-color: var(--a_offblack);
+}
+
+.status-light.green {
+  background-color: var(--m_green);
+}
+
+.status-light.red {
+  background-color: var(--m_red);
+}
+
+/* --- Custom Weapons --- */
+.weapon_generator_container {
+  display: flex;
+  flex-direction: row;
+  margin-top: 40px;
+  /* justify-content: space-around; */
+  justify-content: space-evenly;
+  width: 99% !important;
+  flex-wrap: wrap;
+}
+
+.weapon_generator_panel {
+  width: 40%;
+  margin: 0px;
+}
+
+.weapon_card_container_container {
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  height: max-content;
+}
+
+.weapon_card_container {
+  display: flex;
+  background-color: var(--i_item_background);
+  width: 370px;
+  height: max-content;
+  padding: 20px;
+  border-radius: 16px;
+  align-items: center;
+  flex-direction: column;
+  align-self: center;
+}
+
+.weapon_card_container span {
+  margin-top: 5px;
+  font-family: "tf2_secondary";
+  font-size: 16px;
+  text-align: center;
+}
+
+.weapon_card_image_container {
+  background-color: var(--i_background_2);
+  width: 185px;
+  height: 115px;
+  border-radius: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  position: relative;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.weapon_card_image {
+  display: none;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+#weapon_attr_name_display {
+  color: var(--q_unique);
+  font-family: "tf2_build";
+  font-size: 19px;
+}
+
+#craftedByLabel,
+#weapon_attr_crafted_input,
+#weapon_attr_restrictionCustom_input {
+  display: none;
+}
+
+#weapon_attr_crafted_display {
+  display: none;
+  color: var(--w_positive);
+}
+
+#weapon_attr_restriction_display {
+  display: none;
+  color: var(--w_negative);
+}
+
+.strange_attribute {
+  width: 95%;
+  display: flex;
+  margin: 15px 0 15px 0;
+}
+
+.strange_attribute button {
+  width: 50px;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  color: var(--m_text);
+  overflow: auto;
+}
+
+#weapon_attr_customStat_display {
+  display: none;
+}
+
+#weapon_attr_customStat_display div {
+  font-family: "tf2_secondary";
+  text-align: center;
+  margin-top: 5px;
+  font-size: 16px;
+}
+
+.handle {
+  height: 50px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: move;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+#weapon_attr_strange_display {
+  display: none;
+}
+
+#weapon_attr_strange_display div {
+  font-family: "tf2_secondary";
+  color: var(--w_level);
+  text-align: center;
+  font-size: 16px;
+}
+
+#weapon_attr_weaponType_display {
+  display: none;
+  color: var(--w_level)
+}
+
+#halloween_icon,
+#strange_icon,
+#unusual_icon,
+#pyroland_icon {
+  display: none;
+  position: relative;
+  width: 30px;
+  height: 30px;
+}
+
+.weapon_card_image_container div {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 0;
+  right: 0;
+}
+
+#scale_select {
+  width: 100%;
+}
+
+#resolution_display {
+  text-align: center;
+}
+
+#download_card_button {
+  justify-content: center;
+  margin-top: 10px;
+  width: 95%;
+  align-self: center;
+}
+
+#weapon_attr_festivized_display {
+  display: none;
+  color: var(--q_unusual);
+}
+
+#weapon_attr_unusual_input,
+#unusulaLabel {
+  display: none;
+}
+
+#weapon_attr_unusualEffect_display {
+  display: none;
+  color: var(--q_unusual)
+}
+
+.custom_stat {
+  width: 95%;
+  display: flex;
+  margin: 15px 0 15px 0;
+}
+
+.custom_stat button {
+  width: 50px;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  color: var(--m_text);
+  overflow: auto;
+}
+
+#weapon_attr_custom_stat_display div {
+  font-family: "tf2_secondary";
+  text-align: center;
+}
+
+.positive {
+  color: var(--w_positive);
+}
+
+.negative {
+  color: var(--w_negative);
+}
+
+.neutral {
+  color: var(--w_neutral);
+}
+
+.custom_stat_select {
+  margin-left: auto;
+  background: var(--i_background_2);
+  width: 25%;
+  padding: 7px 5px 7px 5px;
+  color: var(--m_text);
+  border-radius: 5px;
+}
+
+#itemSetNameLabel,
+#weapon_attr_itemSetName_input {
+  display: none;
+}
+
+#weapon_attr_itemSetName_display {
+  display: none;
+  margin-top: 20px;
+  color: var(--item_ItemSetName);
+}
+
+.item_set_member {
+  width: 95%;
+  display: flex;
+  margin: 15px 0 15px 0;
+}
+
+.item_set_member button {
+  width: 50px;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  color: var(--m_text);
+  overflow: auto;
+}
+
+#weapon_attr_itemSetMembers_display {
+  display: none;
+}
+
+#weapon_attr_itemSetMembers_display div {
+  font-size: 16px;
+  font-family: "tf2_secondary";
+  text-align: center;
+  color: var(--w_level);
+}
+
+.itemSetCompleted {
+  color: var(--item_ItemSetItemEquipped) !important;
+}
+
+#weapon_attr_itemSetBonus_display {
+  margin-top: 20px;
+  display: none;
+  color: var(--item_ItemSetName);
+}
+
+#weapon_attr_itemSetBonusText_display {
+  display: none;
+  color: var(--w_level)
+}
+
+#weapon_attr_itemSetBonus_input,
+#itemSetBonusLabel {
+  display: none;
+}
+
+.itemSetBonusCompleted {
+  color: var(--w_positive) !important;
+}
+
+#weapon_attr_limitedUseConsumableItem_input {
+  padding: 7px 5px 7px 5px;
+}
+
+#weapon_attr_limitedUseConsumableItem_display {
+  display: none;
+  margin-top: 20px;
+}
+
+#weapon_attr_limitedUseConsumableItem_display,
+#limitedUseCount {
+  color: var(--item_ItemLimitedUse)
+}
+
+/* --- gifted item --- */
+#giftedFromLabel,
+#weapon_attr_gifted_input,
+#weapon_attr_gifted_display,
+#weapon_attr_giftedDate_display {
+  display: none;
+}
+
+#weapon_attr_giftedDate_group {
+  display: none;
+}
+
+#weapon_attr_gifted_display {
+  margin-top: 20px;
+  color: var(--w_positive)
+}
+
+#weapon_attr_inventoryRestriction_display {
+  margin-top: 20px;
+  display: none;
+}
+
+#weapon_attr_resstriction_display,
+#weapon_attr_reason_group,
+#weapon_attr_restriction_group,
+#consumable_group {
+  display: none;
+}
+
+.custom_wep_generator-group {
+  display: flex;
+  align-items: center;
+  margin: 8px;
+}
+
+.custom_wep_generator-group label {
+  margin-right: 5px;
+  color: var(--m_text);
+}
+
+.custom_wep_generator-group input[type="text"] {
+  width: 50%;
+  margin-left: auto;
+}
+
+.custom_wep_generator-group input[type="number"] {
+  width: 50%;
+  margin-left: auto;
+}
+
+.custom_wep_generator-group select {
+  background: var(--i_background_1);
+  width: 50%;
+  padding-left: 10px;
+  font-family: "tf2_build";
+  margin-left: auto;
+  color: var(--m_text);
+  border-radius: 5px;
+  padding: 7px 5px 7px 5px;
+}
+
+.custom_wep_generator-group button {
+  width: 50%;
+}
+
+#weapon_attributes_container input[type="number"] {
+  width: 25%;
+}
+
+#weapon_attributes_container input[type="text"] {
+  width: 60%;
+}
+
+#weapon_attributes_container {
+  display: flex;
+  width: 35%;
+  flex-direction: column;
+  height: 120vh;
+  overflow-y: auto;
+  margin-bottom: 20px;
+}
+
+#weapon_attributes_container i {
+  margin-right: 0;
+}
+
+#weapon_attributes_container .custom-checkbox {
+  margin: 0px 10px 0px 10px;
+}
+
+.weapon_attributes_container_group {
+  align-items: stretch;
+}
+
+#weapon_attributes_strange_container,
+#weapon_attributes_stat_container,
+#weapon_attributes_setMember_container {
+  height: 25%;
+  overflow-y: auto;
+}
+
+#weapon_attributes_stat_container {
+  height: 50%;
+}
+
+.weapon_attributes_button_container button {
+  width: 60%;
+  justify-content: center;
+}
+
+.weapon_attributes_button_container {
+  justify-content: space-evenly;
+  align-items: center;
+  display: flex;
+  background-color: var(--m_footer);
+  border: 2px solid var(--m_footer_shadow);
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.weapon_generator_panel hr {
+  width: 100%;
+  margin: 0;
+}
+
+.custom_weapon_controls {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.custom_weapon_controls label {
+  color: var(--m_text);
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border: 2px solid var(--m_footer_shadow);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.radio-label input[type="radio"] {
+  display: none;
+}
+
+.radio-label input[type="radio"]:checked+span {
+  background: linear-gradient(to bottom, var(--m_button_hover_top) 0%, var(--m_button_hover) 100%);
+}
+
+.radio-label:hover {
+  background: linear-gradient(to bottom, var(--m_button_hover_top) 0%, var(--m_button_hover) 100%);
+}
+
+.radio-label span {
+  display: inline-block;
+  padding: 10px 10px;
+  border-radius: 5px;
+  user-select: none;
+}
+
+#class_images {
+  display: none;
+  margin-top: 15px;
+  gap: 5px;
+}
+
+#class_images img {
+  height: 30px;
+  width: 30px;
+}
+
+#class_options,
+#team_options {
+  display: none;
+}
+
+#custom_level_range_inputs,
+#multiple_value_input {
+  display: none;
+}
+
+#generate_random_weapon_button {
+  justify-content: center;
+  margin: 15px 0px 15px 0px;
+  padding: 15px;
+  width: 95%;
+  align-self: center;
+}
+
+/* --- Responsivity --- */
+@media (min-width: 1400px) and (max-width: 1700px) {
+  * {
+    font-size: 20px;
+  }
+
+  nav {
+    width: 45%;
+  }
+
+  .editor section {
+    top: 0;
+    left: 0;
+  }
+
+  .container-wrapper {
+    width: 40%;
+  }
+
+  #buttonContainer button,
+  #buttonContainer i {
+    font-size: 18px;
+  }
+
+  .weapon_generator_panel {
+    width: 38%
+  }
+}
+
+@media (min-width: 995px) and (max-width: 1399px) {
+  * {
+    font-size: 18px;
+  }
+
+  h1 {
+    font-size: 56px;
+  }
+
+  .logo {
+    font-size: 35px;
+  }
+
+  nav {
+    width: 60%;
+  }
+
+  footer button {
+    font-size: 18px;
+  }
+
+  .multibtn i {
+    font-size: 20px;
+  }
+
+  .container-wrapper {
+    width: 45%;
+    margin-top: 15px;
+  }
+
+  #mirror_hor,
+  #mirror_ver,
+  select {
+    font-size: 18px;
+  }
+
+  .cropper-controls {
+    gap: 5px;
+  }
+
+  .control-group p,
+  .control-group b {
+    font-size: 15px;
+  }
+
+  .nav_decal {
+    width: 50%;
+  }
+
+  #buttonContainer button,
+  #buttonContainer i {
+    font-size: 18px;
+  }
+
+  #buttonContainer {
+    width: 95%;
+    margin-top: 1%;
+  }
+
+  #buttonContainer button {
+    width: 32%;
+  }
+
+  #overlayContent {
+    width: 80%;
+  }
+
+  #weapon_attributes_container,
+  .weapon_generator_panel {
+    width: 50%;
+  }
+
+  #optionsOverlay,
+  #weapon_select_overlay {
+    width: 70%;
+    height: 90%;
+  }
+
+  #optionsOverlay h2,
+  #weapon_select_overlay h2 {
+    font-size: 26px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 994px) {
+  * {
+    font-size: 16px;
+  }
+
+  h1 {
+    font-size: 48px;
+  }
+
+  .logo {
+    font-size: 30px;
+  }
+
+  nav {
+    width: 80%;
+  }
+
+  footer>div {
+    width: 95%;
+  }
+
+  footer button {
+    font-size: 16px;
+  }
+
+  .multibtn i {
+    font-size: 18px;
+  }
+
+  /* Editor page*/
+  .editor section {
+    top: 0%;
+    left: 0%;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .container-wrapper {
+    position: relative;
+    width: 95%;
+    top: 0%;
+    right: 0;
+  }
+
+  #mirror_hor,
+  #mirror_ver,
+  select {
+    font-size: 16px;
+  }
+
+  .nav_decal {
+    width: 100%;
+    margin-top: 1%;
+  }
+
+  .control-group {
+    margin-top: 5px;
+  }
+
+  .editor {
+    overflow: visible;
+  }
+
+  /* New item overlay*/
+  #buttonContainer {
+    width: 95%;
+    margin-top: 1%;
+    justify-content: space-between;
+  }
+
+  #buttonContainer button,
+  #buttonContainer i {
+    font-size: 16px;
+  }
+
+  #buttonContainer button {
+    width: 32%;
+  }
+
+  #overlayContent {
+    width: 90%;
+  }
+
+  /* --- Custom weapon page ---*/
+  #weapon_attributes_container,
+  .weapon_generator_panel {
+    width: 50%;
+  }
+
+  #optionsOverlay,
+  #weapon_select_overlay {
+    width: 70%;
+    height: 90%;
+  }
+
+  #optionsOverlay h2,
+  #weapon_select_overlay h2 {
+    font-size: 26px;
+  }
+
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+  * {
+    font-size: 16px;
+  }
+
+  h1 {
+    font-size: 40px;
+  }
+
+  .logo {
+    font-size: 25px;
+  }
+
+  nav {
+    width: 90%;
+    margin-top: 5%;
+  }
+
+  footer button {
+    width: 25%;
+    margin: 1%;
+    font-size: 16px;
+  }
+
+  footer>div {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    height: auto;
+  }
+
+  footer {
+    height: auto;
+  }
+  .multibtn i {
+    font-size: 18px;
+  }
+
+  .editor section,
+  .text_page section {
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .container-wrapper {
+    position: relative;
+    width: 100%;
+    top: 1%;
+    right: 0;
+    margin-bottom: 15%;
+  }
+
+  #mirror_hor,
+  #mirror_ver,
+  .control-group select,
+  .control-group p,
+  .control-group b {
+    font-size: 16px;
+  }
+
+  .nav_decal {
+    width: 100%;
+    margin-top: 1%;
+  }
+
+  .control-group {
+    margin-top: 5px;
+  }
+
+  /* New item overlay*/
+  #overlay p {
+    font-size: 50px;
+  }
+
+  #overlay p:nth-child(2),
+  #overlay span {
+    font-size: 25px;
+  }
+
+  #buttonContainer {
+    width: 95%;
+    height: auto;
+    margin-top: 1%;
+  }
+
+  #buttonContainer button {
+    width: 32%;
+  }
+
+  #buttonContainer button,
+  #buttonContainer i {
+    font-size: 16px;
+  }
+
+  #overlayContent {
+    width: 95%;
+  }
+
+  /* --- Custom weapon page ---*/
+  #weapon_attributes_container,
+  .weapon_generator_panel {
+    width: 50%;
+  }
+
+  #optionsOverlay,
+  #weapon_select_overlay {
+    width: 90%;
+    height: 90%;
+  }
+
+  #optionsOverlay h2,
+  #weapon_select_overlay h2 {
+    font-size: 26px;
+  }
+
+  /* --- calculator ---*/
+  .itemList_container_right {
+    width: 100%;
+  }
+}
+
+@media (max-width: 575px) {
+  * {
+    font-size: 15px;
+  }
+
+  h1 {
+    font-size: 30px;
+    margin: 5%
+  }
+
+  nav {
+    width: 100%;
+    padding: 15px;
+  }
+
+  footer {
+    display: flex;
+    margin-top: 50px;
+  }
+
+  .main_menu section {
+    left: 0;
+    top: auto;
+    width: 100%;
+  }
+
+  footer>div {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  footer button {
+    width: 100%;
+    margin: 5px 0;
+    font-size: 16px;
+  }
+
+  .multibtn {
+    width: 100%;
+    margin: 5px 0;
+  }
+
+  .multibtn button {
+    flex: 1;
+  }
+
+  .logo {
+    top: 1px;
+    font-size: 30px;
+  }
+
+  /* Editor page*/
+  .editor section,
+  .text_page section {
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .container-wrapper {
+    position: relative;
+    width: 100%;
+    right: 0;
+    margin-bottom: 15%;
+    height: 100%;
+  }
+
+  #nextButtonContainer {
+    position: relative;
+    overflow: scroll;
+  }
+
+  .nav_decal {
+    margin-top: 0px;
+  }
+
+  .control-group {
+    margin-top: 5px;
+  }
+
+  .control-group select,
+  #mirror_hor,
+  #mirror_ver,
+  .control-group p,
+  .control-group b {
+    font-size: 15px;
+  }
+
+  /* New item overlay*/
+  #overlay p {
+    font-size: 32px;
+  }
+
+  #buttonContainer button,
+  #buttonContainer i,
+  #overlay p:nth-child(2),
+  #overlay span {
+    font-size: 15px;
+  }
+
+  #buttonContainer {
+    width: 95%;
+    height: auto;
+    flex-direction: column;
+  }
+
+  #buttonContainer button {
+    width: 100%;
+    margin-top: 1%;
+  }
+
+  #overlayContent {
+    width: 95%;
+  }
+
+  /* --- Custom weapon page ---*/
+  .weapon_generator_panel,
+  #weapon_attributes_container {
+    width: 100%;
+  }
+
+  #optionsOverlay,
+  #weapon_select_overlay {
+    width: 90%;
+    height: 90%;
+  }
+
+  #optionsOverlay h2,
+  #weapon_select_overlay h2 {
+    font-size: 26px;
+  }
+
+  /* --- calculator ---*/
+  .itemList_container_right,
+  #itemList_group {
+    width: 100%;
+  }
+
+}
+
+/* --- FONT --- */
+@font-face {
+  font-family: "tf2_build";
+  src: url("fonts/tf2build.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "tf2_secondary";
+  src: url("fonts/TF2secondary.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Original icons by valve, vectorized by me, converted to font format using IcoMoon */
+@font-face {
+  font-family: "TF2_Icons";
+  src: url("fonts/TF2_Icons.woff") format("woff"), url("fonts/TF2_Icons.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Crispy";
+  src: url("fonts/Chrispy.otf");
+  font-weight: normal;
+  font-style: normal;
+}

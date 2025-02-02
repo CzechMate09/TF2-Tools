@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/site.webmanifest">
+    
+    <title>Random Weapon Generator | TF2 Tools</title>
+</head>
+<body class="editor">
+      <section class="weapon_generator_container">
+        <nav class="weapon_generator_panel">
+          <h2>Random Weapon generator <button id="helpButton">?</button></h2>
+          <div class="custom_weapon_controls">
+            <hr>
+            <div class="custom_wep_generator-group">
+              <label class="custom-checkbox">
+                  <input type="checkbox" id="match_name_with_image_checkbox" autocomplete="off" checked/>
+                  <span class="checkmark"></span> Match Image with Name
+              </label>
+            </div>
+            <div class="custom_wep_generator-group">
+                <label class="custom-checkbox">
+                    <input type="checkbox" id="match_name_with_type_checkbox" autocomplete="off" checked/>
+                    <span class="checkmark"></span> Match Weapon type with Name
+                </label>
+            </div>
+            <div class="custom_wep_generator-group">
+              <label class="custom-checkbox">
+                <input type="checkbox" id="community_name_checkbox" autocomplete="off"/>
+                <span class="checkmark"></span> Use Community made names (WIP)
+              </label>
+            </div>
+
+            <div class="custom_wep_generator-group">
+              <label class="custom-checkbox">
+                <input type="checkbox" id="community_type_checkbox" autocomplete="off"/>
+                <span class="checkmark"></span> Use Community made weapon types (WIP)
+              </label>
+            </div>
+            <hr>
+            <div class="custom_wep_generator-group">
+              Class: <select id="weapon-class-filter">
+                  <option value="">All Classes</option>
+              </select>
+            </div>
+            <div class="custom_wep_generator-group">
+                Slot: <select id="weapon-slot-filter">
+                    <option value="">All Slots</option>
+                </select>
+            </div>
+            <div class="custom_wep_generator-group">
+                Weapon Type: <select id="weapon-type-filter">
+                    <option value="">All Weapon Types</option>
+                </select>
+            </div>
+            <div class="custom_wep_generator-group">
+                Weapon: <select id="weapon-filter">
+                    <option value="">All Weapons</option>
+                </select>
+            </div>
+            <div class="custom_wep_generator-group">
+              <label class="custom-checkbox">
+                  <input type="checkbox" id="use_normal_stats_checkbox" autocomplete="off" checked/>
+                  <span class="checkmark"></span> Use Normal stats
+              </label>
+            </div>
+            <div class="custom_wep_generator-group">
+                <label class="custom-checkbox">
+                    <input type="checkbox" id="use_hidden_stats_checkbox" autocomplete="off"/>
+                    <span class="checkmark"></span> Use Hidden stats
+                </label>
+            </div>
+            <div class="custom_wep_generator-group">
+                <label class="custom-checkbox">
+                    <input type="checkbox" id="use_unused_stats_checkbox" autocomplete="off"/>
+                    <span class="checkmark"></span> Use Unused stats
+                </label>
+            </div>
+            <div class="custom_wep_generator-group">
+              <label class="custom-checkbox">
+                <input type="checkbox" id="community_stats_checkbox" autocomplete="off"/>
+                <span class="checkmark"></span> Use community made stats (WIP)
+              </label>
+            </div>
+            <hr>
+            <div class="custom_wep_generator-group">
+              <label class="custom-checkbox">
+                <input type="checkbox" id="use_random_description_checkbox" autocomplete="off"/>
+                <span class="checkmark"></span> Use Random Weapon Description
+              </label>
+            </div>
+            <div class="custom_wep_generator-group">
+              <label class="custom-checkbox">
+                <input type="checkbox" id="use_community_description_checkbox" autocomplete="off"/>
+                <span class="checkmark"></span> Use Community made Descriptions
+              </label>
+            </div>
+            <hr>
+            <div class="custom_wep_generator-group">
+              <label for="custom_stat_min_value">Minimal Stat Value:</label>
+              <input id="custom_stat_min_value" type="text" autocomplete="off" placeholder="1"> 
+            </div>
+            <div class="custom_wep_generator-group">
+                <label for="custom_stat_max_value">Maximum Stat Value:</label>
+                <input id="custom_stat_max_value" type="text" autocomplete="off" placeholder="100"> 
+            </div>
+            <div class="custom_wep_generator-group">
+                <label class="custom-checkbox">
+                    <input type="checkbox" id="use_multiples_checkbox" autocomplete="off"/>
+                    <span class="checkmark"></span> use multiples of 
+                </label>
+                <input id="multiple_value_input" type="text" autocomplete="off" placeholder="5"> 
+            </div>
+            <hr>
+            <div class="custom_wep_generator-group">
+              <label for="custom_stat_min_input">Min Amount of stats:</label>
+              <input id="custom_stat_min_input" type="text" autocomplete="off" placeholder="1"> 
+            </div>
+            <div class="custom_wep_generator-group">
+              <label for="custom_stat_max_input">Max Amount of stats:</label>
+              <input id="custom_stat_max_input" type="text" autocomplete="off" placeholder="5"> 
+            </div>
+            <hr>
+            <div class="custom_wep_generator-group">
+              <label class="custom-checkbox">
+                  <input type="checkbox" id="custom_level_range_checkbox" autocomplete="off"/>
+                  <span class="checkmark"></span> Custom weapon level range
+              </label>
+            </div>
+            <div class="custom_wep_generator-group" id="custom_level_range_inputs">
+              <input type="text" id="custom_level_min" placeholder="Min level" />
+              <input type="text" id="custom_level_max" placeholder="Max level" />
+            </div>
+            <hr>
+            <div class="custom_wep_generator-group">
+              <p><a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSenSpBowJ9qAyuB_dZme2eGx_STymxj86N_g1-lypk60ZOKMA/viewform?usp=sharing">Suggest a weapon name, type, stat or description!</a></p>
+            </div>
+          </div>
+        </nav>
+        
+      <div class="weapon_card_container_container">
+        <button id="generate_random_weapon_button">Generate Random Weapon!</button>
+        <div class="weapon_card_container">
+          <div class="weapon_card_image_container">
+            <img class="weapon_card_image" id="weapon_card_image">
+          </div>
+          <span id="weapon_attr_name_display"></span>
+          <!-- <span id="weapon_attr_level_display"></span> -->
+          <span id="weapon_attr_weaponType_display"></span>
+          <!-- <span id="weapon_attr_crafted_display"></span> -->
+          <!-- <span id="weapon_attr_restriction_display"></span> -->
+          <!-- <span id="weapon_attr_strange_display"></span> -->
+          <!-- <span id="weapon_attr_unusualEffect_display"></span> -->
+          <!-- <span id="weapon_attr_festivized_display">Festivized</span> -->
+          <span id="weapon_attr_customStat_display"></span>
+          <!-- <span id="weapon_attr_gifted_display"></span> -->
+          <!-- <span id="weapon_attr_giftedDate_display"></span> -->
+          <!-- <span id="weapon_attr_itemSetName_display"></span> -->
+          <!-- <span id="weapon_attr_itemSetMembers_display"></span> -->
+          <!-- <span id="weapon_attr_itemSetBonus_display"></span> -->
+          <!-- <span id="weapon_attr_itemSetBonusText_display"></span> -->
+          <!-- <span id="weapon_attr_limitedUseConsumableItem_display">This is a limited use item. <span id="limitedUseCount"></span></span> -->
+          <!-- <span id="weapon_attr_inventoryRestriction_display"></span> -->
+          <div id="class_images"></div>
+        </div>
+        <div class="custom_wep_generator-group">
+          <select id="scale_select" autocomplete="off">
+            <option value="1">Scale: 1</option>
+            <option value="2">Scale: 2</option>
+            <option value="3">Scale: 3</option>
+            <option value="4" selected>Scale: 4 (default)</option>
+            <option value="5">Scale: 5</option>
+          </select>
+        </div>
+        <span id="resolution_display"></span>
+        <button id="download_card_button">Download card</button>
+        <!-- <button id="">Save weapon to browser</button> -->
+      </div>
+      </section>
+
+  <div id="helpOverlay">
+    <div id="HelpOverlayContent">
+      <h2>Random Weapon generator</h2>
+      <p>This generator creates a random weapon with randomized attributes.</p>
+      <p>It includes most weapons and all known stats available in TF2.</p>
+      <h2>Options:</h2>
+      <p><b>Match Image with Name:</b> If enabled, the weapon's image will match its name.</p>
+        <p><b>Match Weapon Type with Name:</b> If enabled, the weapon type (displayed next to "level") will match the weapon's name.</p>
+        <p><b>Class:</b> Filters weapons by the selected class.</p>
+        <p><b>Slot:</b> Filters weapons by the selected slot.</p>
+        <p><b>Weapon Type:</b> Filters weapons by the selected weapon type.</p>
+        <p><b>Weapon:</b> Filters weapons by the selected weapon.</p>
+        <p><b>Use Normal Stats:</b> If enabled, the generator will include normal stats.</p>
+        <p><b>Use Hidden Stats:</b> If enabled, the generator will include stats that are normally hidden in the game.</p>
+        <p><b>Use Unused Stats:</b> If enabled, the generator will include stats that were unused in TF2.</p>
+        <p><b>Use Random Weapon Description:</b> If enabled, the generator will assign a random description from a random weapon.</p>
+        <p><b>Minimal Stat Value:</b> The minimum value that can be assigned to a stat. (Default: 1)</p>
+        <p><b>Maximum Stat Value:</b> The maximum value that can be assigned to a stat. (Default: 100)</p>
+        <p><b>Use Numbers Multiple Of:</b> If enabled, stat values will be rounded to multiples of the specified number.</p>
+        <p><b>Min Amount of Stats:</b> The minimum number of stats a weapon can have. (Default: 1)</p>
+        <p><b>Max Amount of Stats:</b> The maximum number of stats a weapon can have. (Default: 5)</p>
+        <p><b>Custom Weapon Level Range:</b> Defines the minimum and maximum possible weapon levels.</p>
+      <button id="okReturnHelp">OK, return</button>
+      </div>
+    </div>
+  
+    <div id="optionsOverlay"></div>
+    <footer id="footer"></footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js" integrity="sha512-01CJ9/g7e8cUmY0DFTMcUw/ikS799FHiOA0eyHsUWfOetgbx/t6oV4otQ5zXKQyIrQGTHSmRVPIgrgLcZi/WMA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="js/components.js"></script>
+    <script src="js/global_functions.js"></script>
+    <script src="js/random_weapon.js"></script>
+</body>
+</html>

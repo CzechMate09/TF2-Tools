@@ -1,0 +1,29 @@
+{
+    "community_weapon_types": [
+        {
+            "weapon_type": "Needle",
+            "author": "CzechMate",
+            "platform": ""
+        },
+        {
+            "weapon_type": "Dirty Hoe",
+            "author": "CzechMate",
+            "platform": ""
+        },
+        {
+            "weapon_type": "Particle accelerator",
+            "author": "CzechMate",
+            "platform": ""
+        },
+        {
+            "weapon_type": "Glass shard",
+            "author": "CzechMate",
+            "platform": ""
+        },
+        {
+            "weapon_type": "Gunlance",
+            "author": "CzechMate",
+            "platform": ""
+        }
+    ]
+}

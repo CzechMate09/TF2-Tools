@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/site.webmanifest">
+    
+    <title>Custom Weapon Generator | TF2 Tools</title>
+</head>
+<body class="editor">
+      <section class="weapon_generator_container">
+        <nav class="weapon_generator_panel">
+          <h2>Custom Weapon generator</h2>
+          <div class="custom_weapon_controls">
+            <div class="custom_wep_generator-group">
+              <label id="file-label" for="imageUpload" class="file-label"><i class="fa-solid fa-file-import"></i> Upload image</label>
+              <input type="file" id="imageUpload" accept="image/*" />
+              <button id="weapon_select_button">Preload a weapon</button>
+            </div>
+
+            <div class="custom_wep_generator-group">
+              <label for="weapon_attr_name_input">Name:</label>
+              <input id="weapon_attr_name_input" type="text" autocomplete="off"> 
+            </div>
+
+            <div class="custom_wep_generator-group">
+              <label for="weapon_attr_quality_select">Quality: </label>
+              <select id="weapon_attr_quality_select" autocomplete="off"></select>
+            </div>
+
+            <div class="custom_wep_generator-group">
+              <label for="weapon_attr_level_input">Level:</label>
+              <input id="weapon_attr_level_input" type="text" autocomplete="off"> 
+            </div>
+
+            <div class="custom_wep_generator-group">
+              <label for="weapon_attr_weaponType_input">Weapon type:</label>
+              <input id="weapon_attr_weaponType_input" type="text" autocomplete="off" > 
+            </div>
+            
+            <div class="custom_wep_generator-group">
+              <label class="custom-checkbox">
+                <input type="checkbox" id="weapon_attr_limited_checkbox" autocomplete="off"/>
+                <span class="checkmark"></span> Limited
+              </label>
+            </div>
+
+            <div class="custom_wep_generator-group">
+              <label class="custom-checkbox">
+                <input type="checkbox" id="weapon_attr_crafted_checkbox" autocomplete="off"/>
+                <span class="checkmark"></span> Crafted
+              </label>
+              <label id="craftedByLabel" for="weapon_attr_crafted_input">By:</label>
+              <input id="weapon_attr_crafted_input" type="text" autocomplete="off"> 
+            </div>
+
+            <hr>
+
+            <div class="custom_wep_generator-group">
+              <label class="custom-checkbox">
+                <input type="checkbox" id="weapon_attr_restrictionHalloween_checkbox" autocomplete="off"/>
+                <span class="checkmark"></span> Halloween restricted
+              </label>
+            </div>
+
+            <div class="custom_wep_generator-group">
+              <label class="custom-checkbox">
+                <input type="checkbox" id="weapon_attr_restrictionCustom_checkbox" autocomplete="off"/>
+                <span class="checkmark"></span> Custom Restriction:
+              </label>
+              
+              <input id="weapon_attr_restrictionCustom_input" type="text" autocomplete="off">
+            </div>
+
+            <div class="custom_wep_generator-group">
+              <label class="custom-checkbox">
+                <input type="checkbox" id="weapon_attr_halloween_icon" autocomplete="off"/>
+                <span class="checkmark"></span> Show Halloween icon
+              </label>
+            </div>
+            <hr>
+
+            <div class="custom_wep_generator-group">
+              <label class="custom-checkbox">
+                <input type="checkbox" id="weapon_attr_strange_icon" autocomplete="off"/>
+                <span class="checkmark"></span> Show strange counter icon
+              </label>
+            </div>
+
+            <div class="custom_wep_generator-group">
+              <label class="custom-checkbox">
+                <input type="checkbox" id="weapon_attr_pyroland_icon" autocomplete="off"/>
+                <span class="checkmark"></span> Show Pyrovision icon
+              </label>
+            </div>
+            
+            <div class="custom_wep_generator-group">
+              <label class="custom-checkbox">
+                <input type="checkbox" id="weapon_attr_unusual_checkbox" autocomplete="off"/>
+                <span class="checkmark"></span> Unusual effect
+              </label>
+              
+              <label for="weapon_attr_unusual_input" id="unusulaLabel">Name:</label>
+              <input id="weapon_attr_unusual_input" type="text" autocomplete="off"> 
+            </div>
+            
+            <div class="custom_wep_generator-group">
+              <label class="custom-checkbox">
+                <input type="checkbox" id="weapon_attr_unusual_icon" autocomplete="off"/>
+                <span class="checkmark"></span> Show Unusual icon
+              </label>
+            </div>
+
+            <div class="custom_wep_generator-group">
+              <label class="custom-checkbox">
+                <input type="checkbox" id="weapon_attr_festivized_checkbox" autocomplete="off"/>
+                <span class="checkmark"></span> Festivized
+              </label>
+            </div>
+            
+            <hr>
+
+            <div class="custom_wep_generator-group">
+              <label class="custom-checkbox">
+                <input type="checkbox" id="weapon_attr_itemSetName_checkbox" autocomplete="off"/>
+                <span class="checkmark"></span> Item set
+              </label>
+              <label id="itemSetNameLabel" for="weapon_attr_itemSetName_input">name:</label>
+              <input id="weapon_attr_itemSetName_input" type="text" autocomplete="off"> 
+            </div>
+
+            <div class="custom_wep_generator-group"> 
+              <label class="custom-checkbox">
+                <input type="checkbox" id="weapon_attr_itemSetBonus_checkbox" autocomplete="off"/>
+                <span class="checkmark"></span> Set Bonus
+              </label>
+
+              <label id="itemSetBonusLabel" for="weapon_attr_itemSetBonus_input">Text:</label>
+              <input id="weapon_attr_itemSetBonus_input" type="text" autocomplete="off"> 
+            </div>
+
+            <div class="custom_wep_generator-group"> 
+              <label class="custom-checkbox">
+                <input type="checkbox" id="weapon_attr_itemSetBonusText_checkbox" autocomplete="off"/>
+                <span class="checkmark"></span> Set Bonus Text Completed
+              </label>
+            </div>
+
+            <hr>
+
+            <div class="custom_wep_generator-group">
+              <label class="custom-checkbox">
+                <input type="checkbox" id="weapon_attr_limitedUseConsumableItem_checkbox" autocomplete="off"/>
+                <span class="checkmark"></span> Limited use consumable item
+              </label>
+            </div>
+
+            <div class="custom_wep_generator-group" id="consumable_group">
+              <label id="limitedUseConsumableItemLabel" for="weapon_attr_limitedUseConsumableItem_input">Number of uses:</label>
+              <input id="weapon_attr_limitedUseConsumableItem_input" type="number" autocomplete="off"> 
+            </div>
+
+            <hr>
+
+            <div class="custom_wep_generator-group">
+              <label class="custom-checkbox">
+                <input type="checkbox" id="weapon_attr_gifted_checkbox" autocomplete="off"/>
+                <span class="checkmark"></span> Gifted Item
+              </label>
+              <label id="giftedFromLabel" for="weapon_attr_gifted_input">From:</label>
+              <input id="weapon_attr_gifted_input" type="text" autocomplete="off"> 
+            </div>
+
+            <div class="custom_wep_generator-group" id="weapon_attr_giftedDate_group">
+              <label id="giftedDateLabel" for="weapon_attr_giftedDate_input">Date recieved:</label>
+              <input id="weapon_attr_giftedDate_input" type="text" autocomplete="off"> 
+            </div>
+            
+            <hr>
+            
+            <div class="custom_wep_generator-group">
+              <label class="custom-checkbox">
+                <input type="checkbox" id="weapon_attr_restriction_checkbox" autocomplete="off"/>
+                <span class="checkmark"></span> Show inventory restrictions
+              </label>
+            </div>
+
+            <div class="custom_wep_generator-group" id="weapon_attr_reason_group">
+              <label for="weapon_attr_reason_input">Reason:</label>
+              <input id="weapon_attr_reason_input" type="text" autocomplete="off"> 
+            </div>
+
+            <div class="custom_wep_generator-group" id="weapon_attr_restriction_group">
+              <label for="weapon_attr_restriction_input">Restrictions:</label>
+              <input id="weapon_attr_restriction_input" type="text" autocomplete="off"> 
+            </div>
+
+            <hr>
+
+            <div class="custom_wep_generator-group">
+              <label class="custom-checkbox">
+                <input type="checkbox" id="class_specific_checkbox" autocomplete="off"/>
+                <span class="checkmark"></span> Class specific
+              </label>
+            </div>
+
+          <div id="class_options">
+            <div class="custom_wep_generator-group">
+              <label>Class Icons:</label>
+              <label class="radio-label">
+                <input type="radio" name="class_icons" value="default" checked>
+                <span>Default</span>
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="class_icons" value="alternative">
+                <span>Alternative</span>
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="class_icons" value="emblems">
+                <span>Emblems</span>
+              </label>
+            </div>
+
+            <div class="custom_wep_generator-group" id="team_options">
+              <label>Team:</label>
+              <label class="radio-label">
+                <input type="radio" name="team_icons" value="RED" checked>
+                <span>Red</span>
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="team_icons" value="BLU">
+                <span>Blu</span>
+              </label>
+            </div>
+
+            <div class="custom_wep_generator-group">
+              <label class="custom-checkbox">
+                <input type="checkbox" class="class-checkbox" value="scout" autocomplete="off"/>
+                <span class="checkmark"></span> Scout
+              </label>
+            </div>
+            <div class="custom_wep_generator-group">
+              <label class="custom-checkbox">
+                <input type="checkbox" class="class-checkbox" value="soldier" autocomplete="off"/>
+                <span class="checkmark"></span> Soldier
+              </label>
+            </div>
+            <div class="custom_wep_generator-group">
+              <label class="custom-checkbox">
+                <input type="checkbox" class="class-checkbox" value="pyro" autocomplete="off"/>
+                <span class="checkmark"></span> Pyro
+              </label>
+            </div>
+            <div class="custom_wep_generator-group">
+              <label class="custom-checkbox">
+                <input type="checkbox" class="class-checkbox" value="demoman" autocomplete="off"/>
+                <span class="checkmark"></span> Demoman
+              </label>
+            </div>
+            <div class="custom_wep_generator-group">
+              <label class="custom-checkbox">
+                <input type="checkbox" class="class-checkbox" value="heavy" autocomplete="off"/>
+                <span class="checkmark"></span> Heavy
+              </label>
+            </div>
+            <div class="custom_wep_generator-group">
+              <label class="custom-checkbox">
+                <input type="checkbox" class="class-checkbox" value="engineer" autocomplete="off"/>
+                <span class="checkmark"></span> Engineer
+              </label>
+            </div>
+            <div class="custom_wep_generator-group">
+              <label class="custom-checkbox">
+                <input type="checkbox" class="class-checkbox" value="medic" autocomplete="off"/>
+                <span class="checkmark"></span> Medic
+              </label>
+            </div>
+            <div class="custom_wep_generator-group">
+              <label class="custom-checkbox">
+                <input type="checkbox" class="class-checkbox" value="sniper" autocomplete="off"/>
+                <span class="checkmark"></span> Sniper
+              </label>
+            </div>
+            <div class="custom_wep_generator-group">
+              <label class="custom-checkbox">
+                <input type="checkbox" class="class-checkbox" value="spy" autocomplete="off"/>
+                <span class="checkmark"></span> Spy
+              </label>
+            </div>
+          </div>
+            
+          </div>
+        </nav>
+        
+        <div id="weapon_attributes_container">
+            <div class="weapon_attributes_button_container">Strange<button id="addStrangePartButton"> Add strange part</button></div>
+            <div id="weapon_attributes_strange_container"></div>
+            <div class="weapon_attributes_button_container">Stats<button id="addCustomWeaponStatButton">Add Custom Weapon Stat</button></div>
+            <div id="weapon_attributes_stat_container"></div>
+            <div class="weapon_attributes_button_container">Item set<button id="itemSetMemberButton"> Add Item set member </button></div>
+            <div id="weapon_attributes_setMember_container"></div>
+        </div>
+
+      <div class="weapon_card_container_container">
+        <div class="weapon_card_container">
+          <div class="weapon_card_image_container">
+            <img class="weapon_card_image" id="weapon_card_image">
+            <div>
+              <img id="halloween_icon" src="img/weapons/icons/viewmode_spooky.png">
+              <img id="pyroland_icon" src="img/weapons/icons/viewmode_pyrovision.png">
+              <img id="unusual_icon" src="img/weapons/icons/viewmode_unusual.png">
+              <img id="strange_icon" src="img/weapons/icons/viewmode_strange.png">
+            </div>
+          </div>
+
+          <span id="weapon_attr_name_display"></span>
+          <!-- <span id="weapon_attr_level_display"></span> -->
+          <span id="weapon_attr_weaponType_display"></span>
+          <span id="weapon_attr_crafted_display"></span>
+          <span id="weapon_attr_restriction_display"></span>
+          <span id="weapon_attr_strange_display"></span>
+          <span id="weapon_attr_unusualEffect_display"></span>
+          <span id="weapon_attr_festivized_display">Festivized</span>
+          <span id="weapon_attr_customStat_display"></span>
+          <span id="weapon_attr_gifted_display"></span>
+          <span id="weapon_attr_giftedDate_display"></span>
+          <span id="weapon_attr_itemSetName_display"></span>
+          <span id="weapon_attr_itemSetMembers_display"></span>
+          <span id="weapon_attr_itemSetBonus_display"></span>
+          <span id="weapon_attr_itemSetBonusText_display"></span>
+          <span id="weapon_attr_limitedUseConsumableItem_display">This is a limited use item. <span id="limitedUseCount"></span></span>
+          <span id="weapon_attr_inventoryRestriction_display"></span>
+          <div id="class_images"></div>
+        </div>
+        <div class="custom_wep_generator-group">
+          <select id="scale_select" autocomplete="off">
+            <option value="1">Scale: 1</option>
+            <option value="2">Scale: 2</option>
+            <option value="3">Scale: 3</option>
+            <option value="4" selected>Scale: 4 (default)</option>
+            <option value="5">Scale: 5</option>
+          </select>
+        </div>
+        <span id="resolution_display"></span>
+        <button id="download_card_button">Download card</button>
+        <!-- <button id="">Save weapon to browser</button> -->
+      </div>
+      </section>
+
+    <div id="weapon_select_overlay">
+      <h2>Preload a weapon</h2>
+
+      <div class="optionsOverlay-group">
+          <input type="text" id="weapon-search" placeholder="Search for a weapon..." autocomplete="off">
+    
+          <div class="filter-container">
+            <select id="weapon-class-filter"></select>
+            <select id="weapon-slot-filter"></select>
+          </div>
+          <div id="weapon-list"></div>
+      </div>
+
+      <button id="weapon_select_button_return">OK</button>
+    </div>
+  
+    <div id="optionsOverlay"></div>
+    <footer id="footer"></footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
+
+    <script src="js/components.js"></script>
+    <script src="js/global_functions.js"></script>
+    <script src="js/custom_weapon.js"></script>
+  </body>
+</html>
