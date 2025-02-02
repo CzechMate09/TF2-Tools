@@ -112,7 +112,6 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 cropped_select.addEventListener("change", function() {
-    console.log(cropped_select.value)
     showOptions(cropped_select.value);
 });
 
@@ -280,7 +279,6 @@ function CreateCropper_flair() {
             imageSmoothingEnabled: true,
             imageSmoothingQuality: "high",
         });
-        console.log(croppedCanvas);
         const roundedCanvas = document.createElement("canvas");
         roundedCanvas.width = imageSize;
         roundedCanvas.height = imageSize;

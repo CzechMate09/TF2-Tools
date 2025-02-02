@@ -363,7 +363,6 @@ function GenerateRandom_description(weapons, communityDescriptions, useRandomWea
     let description = "";
 
     if (useRandomWeaponDescription && useCommunityDescription) {
-        console.log("Both random weapon and community descriptions selected. Choosing randomly between the two...");
         const randomChoice = Math.random() < 0.5 ? "weapon" : "community";
         if (randomChoice === "weapon") {
             description = getRandomWeaponDescription(weapons);

@@ -635,7 +635,6 @@ function updateClassImages() {
       const img = document.createElement("img");
       if (selectedViewMode === "emblems") {
         img.src = `${imageSets[selectedViewMode][checkbox.value]}_${selectedTeam}.png`;
-        console.log(`${imageSets[selectedViewMode][checkbox.value]}_${selectedTeam}.png`)
       } else {
         img.src = imageSets[selectedViewMode][checkbox.value];
       }

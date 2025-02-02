@@ -26,7 +26,6 @@ async function fetchLiveConversionRates() {
         const response = await fetch(apiUrl);
         const data = await response.json();
         REAL_CURRENCY_RATES = data.usd;
-        console.log("Live conversion rates updated:", REAL_CURRENCY_RATES);
 
         currencySelect.innerHTML = "";
         for (const [currency, rate] of Object.entries(REAL_CURRENCY_RATES)) {
