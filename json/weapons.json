@@ -11324,7 +11324,7 @@
       "class": ["scout", "soldier", "pyro", "demoman", "heavy", "engineer", "medic", "sniper", "spy"],
       "weapon_class": "saxxy",
       "name": "Saxxy",
-      "image": "img/weapons/multi/melee/saxxy.png",
+      "image": "img/weapons/multi/melee/Saxxy.png",
       "limited": false,
       "level": "1",
       "type": "Award",
